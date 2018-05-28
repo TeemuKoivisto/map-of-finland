@@ -4,6 +4,31 @@ body {
   font-family: sans-serif;
 }
 
+main {
+  margin: 20px;
+}
+
+.nav-bar {
+  display: flex;
+  flex-direction: row;
+}
+
+.nav-bar-link {
+  border: 1px solid #0366d6;
+  margin: 0 10px 0 0;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.nav-bar-link:hover {
+  background-color: #0366d6;
+  color: white;
+  border: 1px solid #0366d6;
+  margin: 0 10px 0 0;
+  padding: 10px;
+  text-decoration: none;
+}
+
 .countries {
   fill: #ccc;
   stroke: #fff;
