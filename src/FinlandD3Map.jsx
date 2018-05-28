@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { geoMercator, geoTransverseMercator, geoPath } from "d3-geo"
+import { geoMercator, geoPath } from "d3-geo"
 import finlandData from './finland.json'
 
 class FinlandD3Map extends Component {

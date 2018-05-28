@@ -2,6 +2,9 @@
   "name": "kartta-testi",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://teemukoivisto.github.io/map-of-finland",
+  "author": "Teemu Koivisto",
+  "license": "MIT",
   "dependencies": {
     "d3": "^5.4.0",
     "d3-scale": "^2.0.0",
