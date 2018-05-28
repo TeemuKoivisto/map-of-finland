@@ -1,7 +1,6 @@
 {
   "name": "kartta-testi",
   "version": "0.1.0",
-  "private": true,
   "homepage": "http://teemukoivisto.github.io/map-of-finland",
   "author": "Teemu Koivisto",
   "license": "MIT",
@@ -21,6 +20,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "npm run build && rm -r static && mv build/** ."    
   }
 }
