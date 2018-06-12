@@ -3,15 +3,19 @@ import { BrowserRouter, Redirect, Switch } from 'react-router-dom'
 
 import { WrappedRoute } from './WrappedRoute'
 
-import WorldMap from "./WorldMap"
+import FinlandBetterSimpleMap from './FinlandBetterSimpleMap'
+import FinlandSimpleMap from './FinlandSimpleMap'
+import FinlandBetterD3Map from "./FinlandBetterD3Map"
 import FinlandD3Map from "./FinlandD3Map"
 import ToolTipMap from './ToolTipMap'
-import FinlandSimpleMap from './FinlandSimpleMap'
+import WorldMap from "./WorldMap"
 
 export const Routes = () => (
   <BrowserRouter>
     <Switch>
-      <WrappedRoute exact path="/" component={FinlandSimpleMap}/>
+      <WrappedRoute exact path="/" component={FinlandBetterSimpleMap}/>
+      <WrappedRoute path="/simple" component={FinlandSimpleMap}/>
+      <WrappedRoute path="/better-finland-d3" component={FinlandBetterD3Map}/>
       <WrappedRoute path="/finland-d3" component={FinlandD3Map}/>
       <WrappedRoute path="/tooltip" component={ToolTipMap}/>
       <WrappedRoute path="/world" component={WorldMap}/>
