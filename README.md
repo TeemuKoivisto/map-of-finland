@@ -27,9 +27,9 @@ Curious thing it always redirects to the root ((http://teemukoivisto.github.io) 
 
 This map with current municipality borders (as of 2017) was created with lot of pain with the following resources:
 
-[Maanmittauslaitos offers free resources](https://www.maanmittauslaitos.fi/asioi-verkossa/avoimien-aineistojen-tiedostopalvelu) such as map of finnish municipalities. To download the map you should go here: https://tiedostopalvelu.maanmittauslaitos.fi/tp/kartta and select the layers you want to download and submit your request. Shortly you should get a download link to your email.
+[Maanmittauslaitos offers free resources](https://www.maanmittauslaitos.fi/asioi-verkossa/avoimien-aineistojen-tiedostopalvelu) such as map of finnish municipalities. To download the map you should go here: https://tiedostopalvelu.maanmittauslaitos.fi/tp/kartta and select the layers you want to download and submit your request. Shortly you should get a download link to your email. NOTE: because life must be hard my municipalities were in latin-9 encoding.
 
-But this is just the beginning! Oh boy yes well you don't have to go through the path of blood and tears as I did so consider yourself lucky. As you can see if you view the file with a map program (eg. QGIS) is that the municipalities include also the sea-areas which doesn't look that nice. Soo in order to get rid of the excess area you need another layer with the desired topology.
+But this is just the beginning! Oh boy yes well you don't have to go through the path of blood and tears as I did so consider yourself lucky. If you open the file with a map program such QGIS first remember to set the encoding to Latin-9 from properties and then convert the CRS with `Save As` and selecting WGS84 EPSG:4326. Also you'll notice that the municipalities include also the sea-areas which doesn't look that nice. So in order to get rid of the excess area you need another layer with the desired topology.
 
 Here's an old link explaining how it was done back in year 2013 https://github.com/kansanmuisti/datavaalit/wiki/kuntarajat-leikkatuna-suomen-rantaviivalla
 

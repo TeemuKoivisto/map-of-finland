@@ -33,3 +33,29 @@ main {
   fill: #ccc;
   stroke: #fff;
 }
+.simple-map-container {
+  border: 1px solid black;
+  margin: 10px 0 0 0;
+  max-width: 500px;
+  position: absolute;
+}
+
+.fixed-zoom-menu {
+  display: flex;
+  flex-direction: column;
+  left: 10px;
+  position: absolute;
+  top: 10px;
+}
+
+.zoom-button {
+  border: 1px solid #0366d6;
+  margin: 0 10px 10px 0;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.zoom-button:hover {
+  background-color: #0366d6;
+  color: white;
+}

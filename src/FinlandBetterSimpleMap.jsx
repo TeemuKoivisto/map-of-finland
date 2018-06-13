@@ -9,34 +9,49 @@ import {
 import ReactTooltip from "react-tooltip"
 import finland from './kuntarajat-2018.json'
 
-const wrapperStyles = {
-  width: "100%",
-  maxWidth: 980,
-  margin: "0 auto",
-}
-
 class FinlandSimpleMap extends Component {
+  constructor() {
+    super()
+    this.state = {
+      zoom: 1,
+    }
+  }
   componentDidMount() {
     setTimeout(() => {
       ReactTooltip.rebuild()
     }, 100)
   }
+  handleZoomIn = () => {
+    this.setState({
+      zoom: this.state.zoom * 2,
+    })
+  }
+  handleZoomOut = () => {
+    this.setState({
+      zoom: this.state.zoom / 2,
+    })
+  }
   render() {
+    const { zoom } = this.state
     return (
-      <div style={wrapperStyles}>
+      <div className="simple-map-container">
+        <div className="fixed-zoom-menu">
+          <button className="zoom-button" onClick={ this.handleZoomIn }>Zoom in</button>
+          <button className="zoom-button" onClick={ this.handleZoomOut }>Zoom out</button>
+        </div>
         <ComposableMap
           projection="mercator"
           projectionConfig={{
-            scale: [1500],
+            scale: [3500],
           }}
-          width={600}
-          height={800}
+          width={1400}
+          height={1600}
           style={{
             width: "100%",
             height: "auto",
           }}
           >
-          <ZoomableGroup center={[30,65]} disablePanning>
+          <ZoomableGroup center={[27,65.6]} zoom={zoom}>
             <Geographies geography={finland.features}>
               {(geographies, projection) => geographies.map((geography, i) => geography.id !== "ATA" && (
                 <Geography
