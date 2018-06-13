@@ -11,7 +11,7 @@ import ToolTipMap from './ToolTipMap'
 import WorldMap from "./WorldMap"
 
 export const Routes = () => (
-  <BrowserRouter>
+  <BrowserRouter basename={process.env.PUBLIC_URL}>
     <Switch>
       <WrappedRoute exact path="/" component={FinlandBetterSimpleMap}/>
       <WrappedRoute path="/simple" component={FinlandSimpleMap}/>

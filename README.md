@@ -23,6 +23,8 @@ Now it should be live at http://teemukoivisto.github.io/map-of-finland
 
 Curious thing it always redirects to the root ((http://teemukoivisto.github.io) however it works as long as you don't refresh the page (then it goes to my github-homepage).
 
+EDIT: It was fixed by adding `basename`-prop to BrowserRouter (https://github.com/facebook/create-react-app/issues/1765).
+
 ## Explanation how the map was generated
 
 This map with current municipality borders (as of 2017) was created with lot of pain with the following resources:
