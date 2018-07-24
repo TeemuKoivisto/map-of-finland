@@ -34,6 +34,7 @@ This map with current municipality borders (as of 2017) was created with a lot o
 * Kuntajako 1:10 000 map from here https://tiedostopalvelu.maanmittauslaitos.fi/tp/kartta
 * Map of Finland without sea areas https://fusiontables.google.com/DataSource?docid=1V5-SxUZ9zMlvG1uRpJ0NUK7j53tubyC7ZMYpbt0
 * `./cut-small-polys.py` script in this repo to remove small islands from the map
+* GDAL http://www.gdal.org/
 
 ### Instructions to create the map
 
@@ -54,5 +55,7 @@ However as things would be too easy otherwise you might see that there's a lot o
 But thank you [Tomi](https://github.com/tomimick) for already figuring this out for me in the `mapcolorizer` repo. There's a [nifty script](https://github.com/tomimick/mapcolorizer/blob/master/data-finland/data-raw/conv.py) there that loops through the geometries, computes polygon areas and reduces their count. But since at least my GeoJSON was in different shape than Tomi's I had to recreate the script. Wasn't too bad though so thanks again Tomi.
 
 Running `./cut-small-polys.py` should cut away all the smallest polygons from the clipped municipality GeoJSON and output it to `kuntarajat-cut.json`. Remember to set the file names correctly if you wish to try the script.
+
+BUT as I noticed running this script for regions still generates a massive file of complicated polygons. Municipality-map was in tolerable limits (<1 MB) but region map too big (~12 MB). In order to reduce the size I used command line tool called `ogr2ogr` that comes with GDAL library. After installing that you should run `ogr2ogr kuntarajat-2018-2.json kuntarajat-2018.json -simplify 0.01` to simplify the borders. Region-map's size was reduced to 188 kB so 99% reduction. Nice. From user's perspective the map is almost identical.
 
 And that's it! I hope I saved a couple hours (or days) of your life trying to comprehend all this mess. So what was I even supposed to do with this map? Humm...

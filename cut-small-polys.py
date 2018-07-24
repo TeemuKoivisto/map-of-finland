@@ -94,10 +94,12 @@ MIN_POLYGON_SIZE = 0.001
 # Cut polygons smaller than 0.001 (km^2 ??)
 def cut_small_polygons(geojsonObj):
   for feature in geojsonObj['features']:
+    name = feature['properties']['NAMEFIN']
     coordinates = feature['geometry']['coordinates']
     cut_coordinates = []
     # Iterate over each polygon in "coordinates" -list
     for polygon in coordinates:
+      print(name + ' polygon size: ' + str(len(polygon[0])))
       area = polygon_area(polygon[0])
       if area > MIN_POLYGON_SIZE:
         cut_coordinates.append(polygon)
