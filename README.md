@@ -56,6 +56,6 @@ But thank you [Tomi](https://github.com/tomimick) for already figuring this out 
 
 Running `./cut-small-polys.py` should cut away all the smallest polygons from the clipped municipality GeoJSON and output it to `kuntarajat-cut.json`. Remember to set the file names correctly if you wish to try the script.
 
-BUT as I noticed running this script for regions still generates a massive file of complicated polygons. Municipality-map was in tolerable limits (<1 MB) but region map too big (~12 MB). In order to reduce the size I used command line tool called `ogr2ogr` that comes with GDAL library. After installing that you should run `ogr2ogr kuntarajat-2018-2.json kuntarajat-2018.json -simplify 0.01` to simplify the borders. Region-map's size was reduced to 188 kB so 99% reduction. Nice. From user's perspective the map is almost identical.
+BUT as I noticed running this script for regions still generates a massive file of complicated polygons. Municipality-map was in tolerable limits (<1 MB) but region map too big (~12 MB). In order to reduce the size I used command line tool called `ogr2ogr` that comes with GDAL library. After installing that you should run `ogr2ogr kuntarajat-2018-2.json kuntarajat-2018.json -simplify 0.005` to simplify the borders. Region-map's size was reduced to 188 kB so 99% reduction. Nice. From user's perspective the map is almost identical.
 
 And that's it! I hope I saved a couple hours (or days) of your life trying to comprehend all this mess. So what was I even supposed to do with this map? Humm...
