@@ -7,18 +7,21 @@ Just an example using these:
 
 ## How to install
 
+Requires Node >=8 and `yarn` installed globally. Or you could use npm.
+
 1) `yarn`
-2) `npm start`
+2) `yarn start`
 
 ## Deploying
 
-1) Checkout to `gh-pages` -branch: `git checkout gh-pages`
-2) Pull the master: `git pull origin master`
-3) Run: `npm run deploy`
-4) Add files: `git add -A`
-5) Create commit: `git commit -m "Version 0.1.0"`
-6) Tag it?: `git tag v.0.1.0`
-7) Push it to Github: `git push origin gh-pages --tags`
+1) Checkout to master if you're not already: `git checkout master`
+2) Tag the current commit to indicate deployed version: `git tag v.0.1.0`
+3) Checkout to `gh-pages` branch: `git checkout gh-pages`
+4) Pull the master: `git pull origin master`
+5) Run: `npm run deploy`
+6) Add files: `git add -A`
+7) Create commit: `git commit -m "Version 0.1.0"`
+8) Push it to Github: `git push origin gh-pages --tags`
 
 Now it should be live at http://teemukoivisto.github.io/map-of-finland
 
@@ -28,7 +31,7 @@ EDIT: It was fixed by adding `basename`-prop to BrowserRouter (https://github.co
 
 ## Explanation how the map was generated
 
-This map with current municipality borders (as of 2017) was created with a lot of pain with the following resources:
+This map with current municipality borders (as of 2018) was created with a lot of pain with the following resources:
 
 * QGIS 2.18.20
 * Kuntajako 1:10 000 map from here https://tiedostopalvelu.maanmittauslaitos.fi/tp/kartta
@@ -44,7 +47,7 @@ But this is just the beginning! Oh boy yes well you don't have to go through the
 
 Here's an old link explaining how it was done back in year 2013 https://github.com/kansanmuisti/datavaalit/wiki/kuntarajat-leikkatuna-suomen-rantaviivalla
 
-Unfortunately the file containing the shape of finnish coast doesn't exist anymore. But thank God there is already a map of finnish municipalities with coastal borders http://datajournalismi.blogspot.com/2013/02/suomen-kuntarajat-2013-kml-formaatissa.html
+Unfortunately the file containing the shape of finnish coast doesn't exist anymore. But thank God there is already a map of finnish municipalities with coastal borders http://datajournalismi.blogspot.com/2013/02/suomen-kuntarajat-2013-kml-formaatissa.html . We can use this map as a clip layer to cut the coastal borders to get the same result. This 2013 map has some municipalities that don't exist anymore due to unifications which is why we have to recreate the map.
 
 It includes the map here in Google Drive as Fusiontable https://fusiontables.google.com/DataSource?docid=1V5-SxUZ9zMlvG1uRpJ0NUK7j53tubyC7ZMYpbt0 . You can download it by selecting the `Map of geometry` and then choosing `File -> Download -> Format: KML` (took me too long to figure it out). Now we have the cut layer, yey! No need to fumble around with QGIS and OpenStreet Maps trying to Clip the municipality polygons with a line. Just... don't try to do it...
 
@@ -54,7 +57,7 @@ However as things would be too easy otherwise you might see that there's a lot o
 
 But thank you [Tomi](https://github.com/tomimick) for already figuring this out for me in the `mapcolorizer` repo. There's a [nifty script](https://github.com/tomimick/mapcolorizer/blob/master/data-finland/data-raw/conv.py) there that loops through the geometries, computes polygon areas and reduces their count. But since at least my GeoJSON was in different shape than Tomi's I had to recreate the script. Wasn't too bad though so thanks again Tomi.
 
-Running `./cut-small-polys.py` should cut away all the smallest polygons from the clipped municipality GeoJSON and output it to `kuntarajat-cut.json`. Remember to set the file names correctly if you wish to try the script.
+Running `./cut-small-polys.py` should cut away all the smallest polygons from the clipped municipality GeoJSON `kuntarajat-2018-raw.json` and output it to `kuntarajat-2018.json`.
 
 BUT as I noticed running this script for regions still generates a massive file of complicated polygons. Municipality-map was in tolerable limits (<1 MB) but region map too big (~12 MB). In order to reduce the size I used command line tool called `ogr2ogr` that comes with GDAL library. After installing that you should run `ogr2ogr kuntarajat-2018-2.json kuntarajat-2018.json -simplify 0.005` to simplify the borders. Region-map's size was reduced to 188 kB so 99% reduction. Nice. From user's perspective the map is almost identical.
 
