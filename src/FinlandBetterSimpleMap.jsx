@@ -8,6 +8,7 @@ import {
 } from "react-simple-maps"
 import ReactTooltip from "react-tooltip"
 import finland from './kuntarajat-2018.json'
+import { boundingBoxArea, centroid } from 'polygon-utils'
 
 class FinlandSimpleMap extends Component {
   constructor() {
@@ -30,6 +31,11 @@ class FinlandSimpleMap extends Component {
     this.setState({
       zoom: this.state.zoom / 2,
     })
+  }
+  handleGeographyClick = (geography, e) => {
+    const polygon = geography.geometry.coordinates[0]
+    console.log(centroid(polygon))
+    console.log(boundingBoxArea(polygon))
   }
   render() {
     const { zoom } = this.state
@@ -59,6 +65,7 @@ class FinlandSimpleMap extends Component {
                   data-tip={geography.properties.NAMEFIN}
                   geography={geography}
                   projection={projection}
+                  onClick={this.handleGeographyClick}
                   style={{
                     default: {
                       fill: "#ECEFF1",

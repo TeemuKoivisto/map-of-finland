@@ -5,13 +5,14 @@
   "author": "Teemu Koivisto",
   "license": "MIT",
   "dependencies": {
-    "d3": "^5.4.0",
-    "d3-scale": "^2.0.0",
-    "react": "^16.4.0",
-    "react-dom": "^16.4.0",
-    "react-router": "^4.2.0",
-    "react-router-dom": "^4.2.2",
-    "react-scripts": "1.1.4",
+    "d3": "^5.7.0",
+    "d3-scale": "^2.1.2",
+    "polygon-utils": "0.0.1",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.1.1",
     "react-simple-maps": "^0.12.1",
     "react-tooltip": "^3.6.0",
     "topojson-client": "^3.0.0"
@@ -24,6 +25,12 @@
     "deploy": "npm run build && rimraf static && mv build/** ."
   },
   "devDependencies": {
-    "rimraf": "^2.6.2"
-  }
+    "why-did-you-update": "^0.1.1"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
